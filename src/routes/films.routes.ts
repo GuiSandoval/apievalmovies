@@ -7,7 +7,11 @@ const films = [];
 
 filmsRoutes.post('/create', (request, response) => {
   const {
-    name, director, cast, year, gender,
+    name,
+    director,
+    cast,
+    year,
+    gender,
   } = request.body;
 
   const film = {
