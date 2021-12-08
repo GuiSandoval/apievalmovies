@@ -27,6 +27,9 @@ $ yarn
 # Execute os container do Docker utilizando o docker-compose 
 $ docker-compose up
 
+# Executar as migrations do banco de dados 
+$ yarn typeorm migration:run
+
 # Execute a aplicação em modo de desenvolvimento para roda a aplicação
 $ npm run dev
 or
