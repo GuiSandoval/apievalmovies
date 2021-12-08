@@ -1,4 +1,5 @@
 import express from 'express';
+import './database';
 
 import { filmsRoutes } from './routes/films.routes';
 
