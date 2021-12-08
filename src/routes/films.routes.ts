@@ -1,9 +1,10 @@
 import { Router } from 'express';
-import { v4 as uuidV4 } from 'uuid';
+
+import { Film } from '../model/Film';
 
 const filmsRoutes = Router();
 
-const films = [];
+const films: Film[] = [];
 
 filmsRoutes.post('/create', (request, response) => {
   const {
@@ -14,18 +15,20 @@ filmsRoutes.post('/create', (request, response) => {
     gender,
   } = request.body;
 
-  const film = {
-    id: uuidV4(),
+  const film = new Film();
+
+  Object.assign(film, {
     name,
     director,
     cast,
     year,
     gender,
-  };
+    created_at: new Date(),
+  });
 
   films.push(film);
 
-  return response.status(201).send();
+  return response.status(201).json({ film });
 });
 
 export { filmsRoutes };
