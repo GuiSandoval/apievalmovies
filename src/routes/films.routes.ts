@@ -1,10 +1,10 @@
 import { Router } from 'express';
 
-import { Film } from '../model/Film';
+import { FilmRepository } from '../repositories/FilmsRepository';
 
 const filmsRoutes = Router();
 
-const films: Film[] = [];
+const filmsRepository = new FilmRepository();
 
 filmsRoutes.post('/create', (request, response) => {
   const {
@@ -15,20 +15,15 @@ filmsRoutes.post('/create', (request, response) => {
     gender,
   } = request.body;
 
-  const film = new Film();
-
-  Object.assign(film, {
+  filmsRepository.create({
     name,
     director,
     cast,
     year,
     gender,
-    created_at: new Date(),
   });
 
-  films.push(film);
-
-  return response.status(201).json({ film });
+  return response.status(201).send();
 });
 
 export { filmsRoutes };
