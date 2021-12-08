@@ -6,6 +6,8 @@ interface ICreateFilmDTO{
     cast: string[];
     year:number;
     gender:string;
+    evaluation:number;
+    evaluationDescription:string;
 }
 
 class FilmRepository {

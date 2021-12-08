@@ -13,6 +13,8 @@ filmsRoutes.post('/', (request, response) => {
     cast,
     year,
     gender,
+    evaluation,
+    evaluationDescription,
   } = request.body;
 
   const filmAlreadyExists = filmsRepository.findByName(name);
@@ -27,6 +29,8 @@ filmsRoutes.post('/', (request, response) => {
     cast,
     year,
     gender,
+    evaluation,
+    evaluationDescription,
   });
 
   return response.status(201).send();
