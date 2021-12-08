@@ -39,6 +39,11 @@ class FilmRepository {
   list():Film[] {
     return this.films;
   }
+
+  findByName(name:string):Film {
+    const film = this.films.find((singleFilm) => singleFilm.name === name);
+    return film;
+  }
 }
 
 export { FilmRepository };

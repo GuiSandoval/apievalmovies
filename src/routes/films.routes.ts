@@ -15,6 +15,12 @@ filmsRoutes.post('/', (request, response) => {
     gender,
   } = request.body;
 
+  const filmAlreadyExists = filmsRepository.findByName(name);
+
+  if (filmAlreadyExists) {
+    return response.status(400).json({ message: `O Filme ${name} já Existe` });
+  }
+
   filmsRepository.create({
     name,
     director,
