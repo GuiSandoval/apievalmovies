@@ -32,6 +32,12 @@ class FilmRepository {
       gender,
       created_at: new Date(),
     });
+
+    this.films.push(film);
+  }
+
+  list():Film[] {
+    return this.films;
   }
 }
 

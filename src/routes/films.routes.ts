@@ -6,7 +6,7 @@ const filmsRoutes = Router();
 
 const filmsRepository = new FilmRepository();
 
-filmsRoutes.post('/create', (request, response) => {
+filmsRoutes.post('/', (request, response) => {
   const {
     name,
     director,
@@ -24,6 +24,12 @@ filmsRoutes.post('/create', (request, response) => {
   });
 
   return response.status(201).send();
+});
+
+filmsRoutes.get('/', (request, response) => {
+  const listAll = filmsRepository.list();
+
+  return response.json(listAll);
 });
 
 export { filmsRoutes };
