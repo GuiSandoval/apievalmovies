@@ -23,6 +23,8 @@ class FilmRepository {
     cast,
     year,
     gender,
+    evaluation,
+    evaluationDescription,
   }: ICreateFilmDTO): void {
     const film = new Film();
 
@@ -32,6 +34,8 @@ class FilmRepository {
       cast,
       year,
       gender,
+      evaluation,
+      evaluationDescription,
       created_at: new Date(),
     });
 
