@@ -3,12 +3,12 @@ import {
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
-@Entity('film')
+@Entity('films')
 class Film {
   @PrimaryColumn()
     id?: string;
 
-  @Column('title')
+  @Column()
     name: string;
 
   @Column()
@@ -18,15 +18,15 @@ class Film {
     year: number;
 
   @Column()
-    cast: string[];
+    cast: string;
 
   @Column()
     gender:string;
 
   @Column()
-    evaluation:string;
+    evaluation:number;
 
-  @Column('evaluation_description')
+  @Column()
     evaluationDescription:string;
 
   @CreateDateColumn()

@@ -12,12 +12,13 @@ export class CreateFilms1638936061626 implements MigrationInterface {
             isPrimary: true,
           },
           {
-            name: 'title',
+            name: 'name',
             type: 'varchar',
           },
           {
             name: 'description',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'director',
@@ -40,11 +41,11 @@ export class CreateFilms1638936061626 implements MigrationInterface {
             type: 'int',
           },
           {
-            name: 'evaluation_description',
+            name: 'evaluationDescription',
             type: 'text',
           },
           {
-            name: 'creted_at',
+            name: 'created_at',
             type: 'timestamp',
             default: 'now()',
           },

@@ -1,23 +1,16 @@
-import { Film } from '../model/Film';
+import { getRepository, Repository } from 'typeorm';
 
-interface ICreateFilmDTO{
-    name:string;
-    director:string;
-    cast: string[];
-    year:number;
-    gender:string;
-    evaluation:number;
-    evaluationDescription:string;
-}
+import { Film } from '../entities/Film';
+import { ICreateFilmDTO, IFilmsRepository } from './IFilmsRepository';
 
-class FilmRepository {
-  private films: Film[];
+class FilmRepository implements IFilmsRepository {
+  private repository: Repository<Film>;
 
   constructor() {
-    this.films = [];
+    this.repository = getRepository(Film);
   }
 
-  create({
+  async create({
     name,
     director,
     cast,
@@ -25,10 +18,8 @@ class FilmRepository {
     gender,
     evaluation,
     evaluationDescription,
-  }: ICreateFilmDTO): void {
-    const film = new Film();
-
-    Object.assign(film, {
+  }: ICreateFilmDTO): Promise<void> {
+    const film = this.repository.create({
       name,
       director,
       cast,
@@ -36,18 +27,19 @@ class FilmRepository {
       gender,
       evaluation,
       evaluationDescription,
-      created_at: new Date(),
     });
 
-    this.films.push(film);
+    await this.repository.save(film);
   }
 
-  list():Film[] {
-    return this.films;
+  async list():Promise<Film[]> {
+    const listFilms = await this.repository.find();
+
+    return listFilms;
   }
 
-  findByName(name:string):Film {
-    const film = this.films.find((singleFilm) => singleFilm.name === name);
+  async findByName(name:string):Promise<Film> {
+    const film = await this.repository.findOne({ name });
     return film;
   }
 }
