@@ -49,6 +49,7 @@ class FilmRepository implements IFilmsRepository {
 
   async deleteById(id:string):Promise<DeleteResult> {
     const filmDelete = await this.repository.delete({ id });
+
     return filmDelete;
   }
 }
