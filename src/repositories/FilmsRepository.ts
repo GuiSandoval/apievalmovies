@@ -1,4 +1,4 @@
-import { getRepository, Repository } from 'typeorm';
+import { DeleteResult, getRepository, Repository } from 'typeorm';
 
 import { Film } from '../entities/Film';
 import { ICreateFilmDTO, IFilmsRepository } from './IFilmsRepository';
@@ -45,6 +45,11 @@ class FilmRepository implements IFilmsRepository {
   async findById(id:string):Promise<Film> {
     const film = await this.repository.findOne({ id });
     return film;
+  }
+
+  async deleteById(id:string):Promise<DeleteResult> {
+    const filmDelete = await this.repository.delete({ id });
+    return filmDelete;
   }
 }
 
