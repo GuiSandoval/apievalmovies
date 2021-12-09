@@ -42,6 +42,10 @@ class FilmRepository implements IFilmsRepository {
     const film = await this.repository.findOne({ name });
     return film;
   }
+  async findById(id:string):Promise<Film> {
+    const film = await this.repository.findOne({ id });
+    return film;
+  }
 }
 
 export { FilmRepository };

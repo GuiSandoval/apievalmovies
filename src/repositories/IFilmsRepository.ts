@@ -12,6 +12,7 @@ interface ICreateFilmDTO{
 
 interface IFilmsRepository {
     findByName(name: string): Promise<Film>;
+    findById(id: string): Promise<Film>;
     list(): Promise<Film[]>;
     create({
       name,
