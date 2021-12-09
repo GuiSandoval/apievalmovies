@@ -6,7 +6,7 @@ class GetFilmUseCase {
   }
 
   async execute(idFilm): Promise<Film> {
-    const singleFilm = await this.filmRepository.findByName(idFilm);
+    const singleFilm = await this.filmRepository.findById(idFilm);
 
     return singleFilm;
   }
