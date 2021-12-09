@@ -5,8 +5,8 @@ import { ListFilmsUseCase } from './ListFilmsUseCase';
 class ListFilmsController {
   constructor(private listFilmsUseCase: ListFilmsUseCase) {}
 
-  handle(request: Request, response: Response) {
-    const listAll = this.listFilmsUseCase.execute();
+  async handle(request: Request, response: Response) {
+    const listAll = await this.listFilmsUseCase.execute();
 
     return response.json(listAll);
   }
